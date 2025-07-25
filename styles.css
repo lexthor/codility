@@ -1,0 +1,131 @@
+/* Styles for Codility Solutions */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+    color: #222;
+}
+
+header {
+    background: #2d3e50;
+    color: #fff;
+    padding: 1.5em 2em;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #007acc;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    min-height: 80vh;
+}
+
+nav {
+    background: #fff;
+    min-height: 100%;
+}
+
+#challenge-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#challenge-list li {
+    margin-bottom: 1em;
+}
+
+#challenge-list a {
+    text-decoration: none;
+    color: #2d3e50;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    display: block;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+#challenge-list a:hover, #challenge-list a.active {
+    background: #2d3e50;
+    color: #fff;
+}
+
+#solution-display {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    margin: 0 2em 0 2em;
+    padding: 2em;
+}
+
+#solution-display h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #2d3e50;
+}
+
+#code-block {
+    background: #f4f4f4;
+    color: #222;
+    padding: 1em;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+#copy-btn {
+    background: #2d3e50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    margin-top: 1em;
+}
+
+#copy-btn:hover, #copy-btn:focus {
+    background: #1a2533;
+    outline: none;
+}
+
+footer {
+    text-align: center;
+    color: #888;
+    padding: 1em 0;
+    background: #f4f4f4;
+    font-size: 0.95em;
+    border-top: 1px solid #eee;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

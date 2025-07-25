@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codility Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="scripts.js" defer></script> -->
+</head>
+<body>
+    <header>
+        <h1>Codility Solutions</h1>
+    </header>
+    <main style="display: flex;">
+        <nav style="width: 250px; padding: 1em; border-right: 1px solid #eee;">
+            <ul id="challenge-list">
+                <li><a href="#" data-file="01-iterations/binaryGap.js">1. Binary Gap</a></li>
+                <li><a href="#" data-file="02-arrays/oddOccurrencesInArray.js">2. Odd Occurrences in Array</a></li>
+                <li><a href="#" data-file="02-arrays/cyclicRotation.js">2.1 Cyclic Rotation</a></li>
+            </ul>
+        </nav>
+        <section id="solution-display" style="flex: 1;">
+            <h2>Select a challenge</h2>
+            <pre id="code-block" style="background: #f4f4f4; padding: 1em;"></pre>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Codility Solutions</p>
+    </footer>
+    <script>
+        function renderSolution(title, code) {
+            document.getElementById('solution-display').innerHTML = `
+                <h2>${title}</h2>
+                <pre id="code-block">${code}</pre>
+                <button id="copy-btn" style="margin-top:1em;">Copy Code</button>
+                <span id="copy-msg" style="margin-left:1em;color:green;display:none;">Copied!</span>
+            `;
+            document.getElementById('copy-btn').addEventListener('click', function() {
+                const codeText = document.getElementById('code-block').textContent;
+                navigator.clipboard.writeText(codeText).then(() => {
+                    const msg = document.getElementById('copy-msg');
+                    msg.style.display = 'inline';
+                    setTimeout(() => { msg.style.display = 'none'; }, 1200);
+                });
+            });
+        }
+
+        document.querySelectorAll('#challenge-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const file = this.getAttribute('data-file');
+                fetch(file)
+                    .then(res => res.text())
+                    .then(code => {
+                        renderSolution(this.textContent, code);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
