@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Codility Solutions</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- <script src="scripts.js" defer></script> -->
+    <script src="scripts.js" defer></script>
 </head>
 <body>
     <header>
@@ -14,48 +14,90 @@
     <main style="display: flex;">
         <nav style="width: 250px; padding: 1em; border-right: 1px solid #eee;">
             <ul id="challenge-list">
-                <li><a href="#" data-file="01-iterations/binaryGap.js">1. Binary Gap</a></li>
-                <li><a href="#" data-file="02-arrays/oddOccurrencesInArray.js">2. Odd Occurrences in Array</a></li>
-                <li><a href="#" data-file="02-arrays/cyclicRotation.js">2.1 Cyclic Rotation</a></li>
+                <li><a href="#binary-gap">1. Binary Gap</a></li>
+                <li><a href="#cyclic-rotation">2 Cyclic Rotation</a></li>
+                <li><a href="#odd-occurrences">2.1 Odd Occurrences in Array</a></li>
             </ul>
         </nav>
         <section id="solution-display" style="flex: 1;">
-            <h2>Select a challenge</h2>
-            <pre id="code-block" style="background: #f4f4f4; padding: 1em;"></pre>
+            <div id="binary-gap" class="solution-block">
+                <h2>1. Binary Gap</h2>
+                <div class="flavor-text">Find the longest sequence of zeros in the binary representation of an integer that is surrounded by ones at both ends.</div>
+                <pre id="code-block-binary-gap">
+                    function solution(N) {
+                        let binary = N.toString(2);
+                        let maxGap = 0;
+                        let currentGap = 0;
+                        let counting = false;
+
+                        for ( let bit of binary ) {
+                            if (bit === '1') {
+                                if (counting) {
+                                    maxGap = Math.max(maxGap, currentGap);
+                                }
+                                counting = true;
+                                currentGap = 0;
+                            } else if( counting ) {
+                                currentGap++;
+                            }
+                        }
+
+                        return maxGap;
+                    }
+                </pre>
+                <button class="copy-btn" data-target="code-block-binary-gap">Copy Code</button>
+                <span class="copy-msg" style="margin-left:1em;color:green;display:none;">Copied!</span>
+            </div>
+            <div id="cyclic-rotation" class="solution-block" style="display:none;">
+                <h2>2. Cyclic Rotation</h2>
+                <div class="flavor-text">Rotate an array K times to the right.</div>
+                <pre id="code-block-cyclic-rotation">
+                    function solution(A, K) {
+                        const N = A.length;
+                        if (N === 0) return A;
+
+                        const rotations = K % N;
+                        if (rotations === 0) return A;
+
+                        return A.slice(-rotations).concat(A.slice(0, N - rotations));
+                    }
+                </pre>
+                <button class="copy-btn" data-target="code-block-cyclic-rotation">Copy Code</button>
+                <span class="copy-msg" style="margin-left:1em;color:green;display:none;">Copied!</span>
+            </div>
+            <div id="odd-occurrences" class="solution-block" style="display:none;">
+                <h2>2.1 Odd Occurrences in Array</h2>
+                <div class="flavor-text">Find the value that occurs in odd number of elements in the array.</div>
+                <pre id="code-block-odd-occurrences">
+                    function solution(A) {
+                        const count = {};
+                        for (let i = 0; i < A.length; i++) {
+                            count[A[i]] = (count[A[i]] || 0) + 1;
+                        }
+                        for (const key in count) {
+                            if (count[key] % 2 === 1) {
+                                return parseInt(key);
+                            }
+                        }
+                        return 0;
+                    }
+
+                    // alternative solution using XOR
+                    function solutionXOR(A) {
+                        let result = 0;
+                        for (let num of A) {
+                            result ^= num; 
+                        }
+                        return result;
+                    }
+                </pre>
+                <button class="copy-btn" data-target="code-block-odd-occurrences">Copy Code</button>
+                <span class="copy-msg" style="margin-left:1em;color:green;display:none;">Copied!</span>
+            </div>            
         </section>
     </main>
     <footer>
         <p>&copy; 2023 Codility Solutions</p>
     </footer>
-    <script>
-        function renderSolution(title, code) {
-            document.getElementById('solution-display').innerHTML = `
-                <h2>${title}</h2>
-                <pre id="code-block">${code}</pre>
-                <button id="copy-btn" style="margin-top:1em;">Copy Code</button>
-                <span id="copy-msg" style="margin-left:1em;color:green;display:none;">Copied!</span>
-            `;
-            document.getElementById('copy-btn').addEventListener('click', function() {
-                const codeText = document.getElementById('code-block').textContent;
-                navigator.clipboard.writeText(codeText).then(() => {
-                    const msg = document.getElementById('copy-msg');
-                    msg.style.display = 'inline';
-                    setTimeout(() => { msg.style.display = 'none'; }, 1200);
-                });
-            });
-        }
-
-        document.querySelectorAll('#challenge-list a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const file = this.getAttribute('data-file');
-                fetch(file)
-                    .then(res => res.text())
-                    .then(code => {
-                        renderSolution(this.textContent, code);
-                    });
-            });
-        });
-    </script>
 </body>
 </html>

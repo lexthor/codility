@@ -99,7 +99,7 @@ nav {
     margin-top: 1em;
 }
 
-#copy-btn {
+.copy-btn {
     background: #2d3e50;
     color: #fff;
     border: none;
@@ -113,7 +113,7 @@ nav {
     margin-top: 1em;
 }
 
-#copy-btn:hover, #copy-btn:focus {
+.copy-btn:hover, .copy-btn:focus {
     background: #1a2533;
     outline: none;
 }
