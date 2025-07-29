@@ -1,4 +1,3 @@
-// Find the element that occurs an odd number of times in an array
 function solution(A) {
     const count = {};
     for (let i = 0; i < A.length; i++) {

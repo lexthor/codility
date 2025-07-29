@@ -23,7 +23,7 @@
             <div id="binary-gap" class="solution-block">
                 <h2>1. Binary Gap</h2>
                 <div class="flavor-text">Find the longest sequence of zeros in the binary representation of an integer that is surrounded by ones at both ends.</div>
-                <pre id="code-block-binary-gap">
+                <pre class="code-block" id="code-block-binary-gap">
                     function solution(N) {
                         let binary = N.toString(2);
                         let maxGap = 0;
@@ -51,7 +51,7 @@
             <div id="cyclic-rotation" class="solution-block" style="display:none;">
                 <h2>2. Cyclic Rotation</h2>
                 <div class="flavor-text">Rotate an array K times to the right.</div>
-                <pre id="code-block-cyclic-rotation">
+                <pre class="code-block" id="code-block-cyclic-rotation">
                     function solution(A, K) {
                         const N = A.length;
                         if (N === 0) return A;
@@ -68,7 +68,7 @@
             <div id="odd-occurrences" class="solution-block" style="display:none;">
                 <h2>2.1 Odd Occurrences in Array</h2>
                 <div class="flavor-text">Find the value that occurs in odd number of elements in the array.</div>
-                <pre id="code-block-odd-occurrences">
+                <pre class="code-block" id="code-block-odd-occurrences">
                     function solution(A) {
                         const count = {};
                         for (let i = 0; i < A.length; i++) {
